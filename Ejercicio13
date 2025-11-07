@@ -1,0 +1,16 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double redondear(double num, int dec) {
+    double p = pow(10, dec);
+    return round(num * p) / p;
+}
+
+int main() {
+    double n; int dec;
+    cout << "Ingrese número y cantidad de decimales: ";
+    cin >> n >> dec;
+    cout << "Resultado: " << redondear(n, dec) << endl;
+    return 0;
+}
