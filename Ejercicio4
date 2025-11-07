@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+double POTEN(double x, int y) {
+    double r = 1;
+    for (int i = 1; i <= y; i++) r *= x;
+    return r;
+}
+
+long long FAC(int n) {
+    long long f = 1;
+    for (int i = 2; i <= n; i++) f *= i;
+    return f;
+}
+
+double SERIE_ALT(double x, int N) {
+    double suma = 0;
+    int signo = 1;
+    for (int i = 1; i <= N; i += 2) {
+        suma += signo * (POTEN(x, i) / FAC(i));
+        signo *= -1; // alterna + -
+    }
+    return suma;
+}
+
+int main() {
+    double x; int N;
+    cout << "Ingrese x: ";
+    cin >> x;
+    cout << "Ingrese el máximo exponente impar N: ";
+    cin >> N;
+
+    cout << "Resultado de la serie alternada: " << SERIE_ALT(x, N) << endl;
+    return 0;
+}
