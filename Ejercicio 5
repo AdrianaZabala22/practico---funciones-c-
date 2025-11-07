@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+bool SISTEMA(double A, double B, double C, double D, double E, double F, double &X, double &Y) {
+    double det = A*E - B*D;
+    if (det == 0) return false;
+    X = (B*F - C*E) / det;
+    Y = (C*D - A*F) / det;
+    return true;
+}
+
+int main() {
+    double A,B,C,D,E,F,X,Y;
+    cout << "Ingrese A B C D E F: ";
+    cin >> A >> B >> C >> D >> E >> F;
+
+    if (SISTEMA(A,B,C,D,E,F,X,Y))
+        cout << "Solución: X = " << X << ", Y = " << Y << endl;
+    else
+        cout << "No tiene solución única." << endl;
+
+    return 0;
+}
