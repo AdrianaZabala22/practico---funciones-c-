@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+double POTEN(double x, int y) {
+    double result = 1;
+    for (int i = 1; i <= y; i++) result *= x;
+    return result;
+}
+
+long long FAC(int n) {
+    long long f = 1;
+    for (int i = 2; i <= n; i++) f *= i;
+    return f;
+}
+
+double SERIE(double x, int N) {
+    double suma = 0;
+    for (int i = 1; i <= N; i++) {
+        suma += POTEN(x, i) / FAC(i);
+    }
+    return suma;
+}
+
+int main() {
+    double x; int N;
+    cout << "Ingrese el valor de x: ";
+    cin >> x;
+    cout << "Ingrese el número de términos N: ";
+    cin >> N;
+
+    cout << "La suma de la serie es: " << SERIE(x, N) << endl;
+    return 0;
+}
