@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+bool bisiesto(int a) {
+    return (a%4==0 && a%100!=0) || (a%400==0);
+}
+
+int diasMes(int m, int a) {
+    int dias[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+    if (m==2 && bisiesto(a)) return 29;
+    return dias[m];
+}
+
+int diasDesdeInicio(int d, int m, int a) {
+    int total = d;
+    for (int i = 1; i < m; i++)
+        total += diasMes(i, a);
+    return total;
+}
+
+int diferenciaDias(int d1,int m1,int a1,int d2,int m2,int a2) {
+    int dias1 = diasDesdeInicio(d1, m1, a1);
+    int dias2 = diasDesdeInicio(d2, m2, a2);
+    int dif = 0;
+
+    if (a1 == a2)
+        dif = abs(dias2 - dias1);
+    else {
+        // sumamos los días restantes del primer año
+        int diasRestantes = (bisiesto(a1)?366:365) - dias1;
+        // sumamos años completos intermedios
+        for (int i = a1 + 1; i < a2; i++)
+            dif += (bisiesto(i)?366:365);
+        // y los días del segundo año
+        dif += dias2 + diasRestantes;
+    }
+    return dif;
+}
+
+int main() {
+    int d1,m1,a1,d2,m2,a2;
+    cout << "Ingrese primera fecha (d m a): ";
+    cin >> d1 >> m1 >> a1;
+    cout << "Ingrese segunda fecha (d m a): ";
+    cin >> d2 >> m2 >> a2;
+
+    cout << "Días entre fechas: " << diferenciaDias(d1,m1,a1,d2,m2,a2) << endl;
+    return 0;
+}
