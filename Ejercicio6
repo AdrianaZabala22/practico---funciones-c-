@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+string mes(int m) {
+    string meses[13] = {"", "enero", "febrero", "marzo", "abril", "mayo", "junio",
+                        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"};
+    if (m < 1 || m > 12)
+        return "mes inválido";
+    return meses[m];
+}
+
+string LITERAL(int d, int m, int a) {
+    int anio = (a < 100) ? 1900 + a : a;
+    return to_string(d) + " de " + mes(m) + " de " + to_string(anio);
+}
+
+int main() {
+    int d, m, a;
+    cout << "Ingrese día, mes y año: ";
+    cin >> d >> m >> a;
+
+    cout << "Fecha literal: " << LITERAL(d, m, a) << endl;
+    return 0;
+}
