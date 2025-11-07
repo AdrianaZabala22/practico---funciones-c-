@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+double POTEN(double x, int y) {
+    double resultado = 1.0;
+
+    if (y > 0) {
+        for (int i = 1; i <= y; i++) {
+            resultado *= x;
+        }
+    } else if (y < 0) {
+        for (int i = 1; i <= -y; i++) {
+            resultado *= x;
+        }
+        resultado = 1.0 / resultado;
+    } 
+    return resultado;
+}
+
+int main() {
+    double base;
+    int exponente;
+
+    cout << "Ingrese la base: ";
+    cin >> base;
+
+    cout << "Ingrese el exponente (entero, puede ser negativo): ";
+    cin >> exponente;
+
+    double potencia = POTEN(base, exponente);
+
+    cout << base << " elevado a " << exponente << " es: " << potencia << endl;
+
+    return 0;
+}
