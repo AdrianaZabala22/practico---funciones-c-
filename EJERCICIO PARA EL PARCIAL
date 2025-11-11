@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+bool Bisiesto(int anio) {
+    if (anio <= 0) return false;
+    return (anio % 400 == 0) || (anio % 4 == 0 && anio % 100 != 0);
+}
+
+bool fechaValida(int dia, int mes, int anio) {
+    if (anio <= 0) return false;
+
+    if (mes < 1 || mes > 12) return false;
+
+    if (dia < 1) return false;
+
+    int diasMax = 31;
+    // meses con 30 días: abril(4), junio(6), septiembre(9), noviembre(11)
+    if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+        diasMax = 30;
+    } else if (mes == 2) { // febrero
+        if (Bisiesto(anio)) diasMax = 29;
+        else diasMax = 28;
+    } else {
+        diasMax = 31;
+    }
+
+    if (dia > diasMax) return false;
+    return true;
+}
+
+int main() {
+    int d, m, a;
+    cout << "Ingrese dia mes anio (separados por espacios): ";
+    if (!(cin >> d >> m >> a)) {
+        cout << "Entrada inválida.\n";
+        return 1;
+    }
+
+    if (fechaValida(d,m,a)) cout << "La fecha es válida \n";
+    else cout << "La fecha es inválida \n";
+
+    return 0;
+}
