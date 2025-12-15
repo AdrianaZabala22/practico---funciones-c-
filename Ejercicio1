@@ -1,3 +1,33 @@
+/*Construir una función POTEN(x, y), para calcular la potencia 
+x y de dos números reales cualesquiera*/
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+float potencia(float, int);
+
+int main(){
+   float x, r;
+   int y;
+   
+   cout<<"Ingrese el numero de la base: "; cin>>x;
+   cout<<"Ingrese el exponente: "; cin>>y;
+   
+   r = potencia(x,y);
+   cout<<"El resultado de "<<x<<"^"<<y<<" es: "<<r<<endl;
+
+    return 0;
+}
+
+float potencia(float base, int exponente){
+    float resultado;
+    resultado = pow(base, exponente);
+    
+    return resultado;
+}
+
+
 #include <iostream>
 using namespace std;
 
